@@ -27,6 +27,14 @@ function moveFiles(file, destination) {
       return;
     }
 
+    if (destination.endsWith('/')) {
+      if (!fs.existsSync(destination)) {
+        console.error('Error: Destination directory does not exist');
+
+        return;
+      }
+    }
+
     if (fs.existsSync(destination)) {
       const destinationStatus = fs.statSync(destination);
 
